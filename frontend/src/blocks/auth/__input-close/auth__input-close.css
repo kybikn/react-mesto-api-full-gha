@@ -1,0 +1,12 @@
+.auth__input-close {
+  position: absolute;
+  right: 5px;
+  top: 25px;
+  cursor: pointer;
+  color: #fff;
+  z-index: 2;
+}
+
+.auth__input-close:hover {
+  opacity: 0.4;
+}

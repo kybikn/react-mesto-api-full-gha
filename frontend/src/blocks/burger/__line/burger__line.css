@@ -1,0 +1,10 @@
+@media screen and (max-width: 618px) {
+  .burger__line {
+    display: block;
+    width: 24px;
+    height: 3px;
+    margin: 5px auto;
+    background: #fff;
+    transition: 0.7s;
+  }
+}
