@@ -1,0 +1,13 @@
+@media screen and (max-width: 618px) {
+  .burger_active .burger__line_up {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .burger_active .burger__line_middle {
+    opacity: 0;
+  }
+
+  .burger_active .burger__line_down {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
