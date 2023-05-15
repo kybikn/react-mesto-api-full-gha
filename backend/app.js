@@ -28,11 +28,7 @@ const limiter = rateLimit({
 // app.use(cors);
 app.use(cors({
   credentials: true,
-  origin: ['https://mesto-kybikn.nomoredomains.monster',
-  'http://mesto-kybikn.nomoredomains.monster',
-  'http://localhost:3000',
-  'http://localhost:3001',
-  'http://localhost:4000'],
+  origin: true,
   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
   'preflightContinue': false,
 }));
