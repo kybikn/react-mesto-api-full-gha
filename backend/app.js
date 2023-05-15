@@ -4,12 +4,12 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
-const config = require('./config');
+// const config = require('./config');
 
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
 const cors = require('./middlewares/cors');
-// const cors = require('cors');
+const cors = require('cors');
 
 const { PORT } = config;
 
@@ -25,8 +25,10 @@ const limiter = rateLimit({
 });
 
 
-// app.use(cors());
-app.use(cors);
+// app.use(cors);
+app.use(cors({
+  credentials: true,
+}));
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
