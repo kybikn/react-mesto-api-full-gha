@@ -8,12 +8,14 @@ const config = require('./config');
 
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
+const cors = require('./middlewares/cors');
+// const cors = require('cors');
 
 const { PORT } = config;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -22,12 +24,14 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+
+// app.use(cors());
+app.use(cors);
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 app.use(router);
 app.use(errors()); // обработчик ошибок celebrate
 app.use(checkErrors);
