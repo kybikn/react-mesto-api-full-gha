@@ -4,7 +4,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
-// const config = require('./config');
+const config = require('./config');
 
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
