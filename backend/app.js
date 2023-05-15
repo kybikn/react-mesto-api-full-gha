@@ -8,8 +8,8 @@ const cookieParser = require('cookie-parser');
 
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
-// const cors = require('./middlewares/cors');
-const cors = require('cors');
+const cors = require('./middlewares/cors');
+// const cors = require('cors');
 
 const { PORT } = config;
 
@@ -25,13 +25,13 @@ const limiter = rateLimit({
 });
 
 
-// app.use(cors);
-app.use(cors({
-  credentials: true,
-  origin: true,
-  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  'preflightContinue': false,
-}));
+app.use(cors);
+// app.use(cors({
+//   credentials: true,
+//   origin: true,
+//   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   'preflightContinue': false,
+// }));
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
