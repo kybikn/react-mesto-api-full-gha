@@ -1,8 +1,8 @@
 module.exports = (req, res, next) => {
     // Массив доменов, с которых разрешены кросс-доменные запросы
     const allowedCors = [
-        'https://mesto-kybikn.staas.ru',
-        'http://mesto-kybikn.staas.ru',
+        'https://mesto-kybikn.nomoredomains.monster',
+        'http://mesto-kybikn.nomoredomains.monster',
         'http://localhost:3000',
         'http://localhost:3001',
         'http://localhost:4000',
