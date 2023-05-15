@@ -58,9 +58,11 @@ class Auth {
 
 // ----- Инстанс класса Auth --------
 const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co',
+  // baseUrl: 'https://auth.nomoreparties.co',
+  // baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
   headers: {
-    Accept: 'application/json',
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
 });
