@@ -44,7 +44,9 @@ const login = (req, res, next) => {
         .cookie('jwt', token, {
           maxAge: 3600000 * 24 * 7,
           httpOnly: true,
-          sameSite: true,
+          sameSite: 'None',
+          secure: true,
+          domain: '.mesto-kybikn.nomoredomains.monster'
         })
         .status(SUCCESS_CODE).send({ user: userData });
     })
