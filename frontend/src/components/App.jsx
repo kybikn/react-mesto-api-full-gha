@@ -141,8 +141,8 @@ function App() {
     auth.login(email, password)
       .then((payload) => {
         // в случае успеха
-        if (payload.token) {
-          localStorage.setItem('jwt', payload.token);
+        if (payload.user) {
+          // localStorage.setItem('jwt', payload.token);
           setLoggedIn(true);
           navigate('/', { replace: true });
         }
@@ -188,11 +188,13 @@ function App() {
   useEffect(() => {
     // const token = localStorage.getItem('jwt');
     // if (token) {
-    auth.checkToken()
+    // auth.checkToken()
+    api.getProfile()
       .then((payload) => {
-        if (payload.data) {
+        console.log('payload of profile', payload);
+        if (payload) {
           setLoggedIn(true);
-          setEmail(payload.data.email);
+          setEmail(payload.email);
           navigate("/", { replace: true })
           Promise.all([api.getProfile(), api.getInitialCards()])
             .then(([profile, initialCards]) => {
