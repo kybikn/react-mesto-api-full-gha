@@ -4,16 +4,18 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
-const config = require('./config');
 
+const config = require('./config');
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
+const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT } = config;
 
 const app = express();
 
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -22,13 +24,16 @@ const limiter = rateLimit({
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
 
+
+app.use(cors);
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(requestLogger); // подключаем логгер запросов
 app.use(router);
+app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
 app.use(checkErrors);
 

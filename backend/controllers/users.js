@@ -51,6 +51,17 @@ const login = (req, res, next) => {
     .catch(next);
 };
 
+const logout = (req, res, next) => {
+  try {
+    res
+    .clearCookie('jwt')
+    .status(SUCCESS_CODE)
+    .send({ message: 'Пользователь вышел' });
+  } catch (error) {
+    next(error)
+  }
+};
+
 const getUser = (id, req, res, next) => {
   User.findById(id)
     .then((user) => {
@@ -116,6 +127,7 @@ const editAvatar = (req, res, next) => {
 module.exports = {
   createUser,
   login,
+  logout,
   getMyProfile,
   getUserById,
   getUsers,

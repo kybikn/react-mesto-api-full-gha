@@ -2,7 +2,14 @@ const authRouter = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 
 const validationRules = require('../utils/validationRules');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
+
+// УДАЛИТЬ!!!!!!!!!!!!!
+authRouter.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+}); 
 
 authRouter.post('/signup', celebrate({
   body: Joi.object().keys({
@@ -20,5 +27,7 @@ authRouter.post('/signin', celebrate({
     password: validationRules.password,
   }),
 }), login);
+
+authRouter.get('/signout', logout);
 
 module.exports = authRouter;

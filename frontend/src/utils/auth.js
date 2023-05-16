@@ -4,6 +4,7 @@ class Auth {
     this._headers = headers;
     this._loginUrl = `${baseUrl}/signin`;
     this._registerUrl = `${baseUrl}/signup`;
+    this._logoutUrl = `${baseUrl}/signout`;
     this._checkTokenUrl = `${baseUrl}/users/me`;
   }
 
@@ -22,8 +23,17 @@ class Auth {
   login = (email, password) => {
     return fetch(this._loginUrl, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ email, password }),
+    }).then(this._handleResponse);
+  };
+
+  logout = () => {
+    return fetch(this._logoutUrl, {
+      method: 'GET',
+      credentials: 'include',
+      headers: this._headers,
     }).then(this._handleResponse);
   };
 
@@ -44,23 +54,13 @@ class Auth {
       },
     }).then(this._handleResponse);
   };
-  // checkToken = (token) => {
-  //   return fetch(this._checkTokenUrl, {
-  //     method: 'GET',
-  //     credentials: 'include',
-  //     headers: {
-  //       ...this._headers,
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then(this._handleResponse);
-  // };
 }
 
 // ----- Инстанс класса Auth --------
 const auth = new Auth({
-  baseUrl: 'https://auth.nomoreparties.co',
+  baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
   headers: {
-    Accept: 'application/json',
+    'Accept': 'application/json',
     'Content-Type': 'application/json',
   },
 });
