@@ -9,7 +9,6 @@ const config = require('./config');
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
 const cors = require('./middlewares/cors');
-// const cors = require('cors');
 
 const { PORT } = config;
 
