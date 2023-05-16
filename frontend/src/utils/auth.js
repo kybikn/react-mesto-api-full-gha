@@ -22,6 +22,7 @@ class Auth {
   login = (email, password) => {
     return fetch(this._loginUrl, {
       method: 'POST',
+      credentials: 'include',
       headers: this._headers,
       body: JSON.stringify({ email, password }),
     }).then(this._handleResponse);
