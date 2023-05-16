@@ -118,11 +118,8 @@ class Api {
 
 // ----- Инстанс класса Api --------
 const api = new Api({
-  // baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-58',
-  // baseUrl: 'http://localhost:3000',
   baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
   headers: {
-    // authorization: '7b00e02a-3f2c-4bad-82e7-40e09900d10e',
     'Content-Type': 'application/json',
   },
 });

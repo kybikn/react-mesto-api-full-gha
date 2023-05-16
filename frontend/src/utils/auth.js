@@ -54,22 +54,10 @@ class Auth {
       },
     }).then(this._handleResponse);
   };
-  // checkToken = (token) => {
-  //   return fetch(this._checkTokenUrl, {
-  //     method: 'GET',
-  //     credentials: 'include',
-  //     headers: {
-  //       ...this._headers,
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   }).then(this._handleResponse);
-  // };
 }
 
 // ----- Инстанс класса Auth --------
 const auth = new Auth({
-  // baseUrl: 'https://auth.nomoreparties.co',
-  // baseUrl: 'http://localhost:3000',
   baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
   headers: {
     'Accept': 'application/json',
