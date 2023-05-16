@@ -4,11 +4,12 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const { errors } = require('celebrate');
 const cookieParser = require('cookie-parser');
-const config = require('./config');
 
+const config = require('./config');
 const router = require('./routes/index');
 const checkErrors = require('./middlewares/checkErrors');
 const cors = require('./middlewares/cors');
+const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT } = config;
 
@@ -25,18 +26,14 @@ const limiter = rateLimit({
 
 
 app.use(cors);
-// app.use(cors({
-//   credentials: true,
-//   origin: true,
-//   'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   'preflightContinue': false,
-// }));
 app.use(cookieParser());
 app.use(helmet());
 app.use(limiter);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(requestLogger); // подключаем логгер запросов
 app.use(router);
+app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors()); // обработчик ошибок celebrate
 app.use(checkErrors);
 
