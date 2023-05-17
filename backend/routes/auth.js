@@ -4,13 +4,6 @@ const { celebrate, Joi } = require('celebrate');
 const validationRules = require('../utils/validationRules');
 const { createUser, login, logout } = require('../controllers/users');
 
-// УДАЛИТЬ!!!!!!!!!!!!!
-authRouter.get('/crash-test', () => {
-  setTimeout(() => {
-    throw new Error('Сервер сейчас упадёт');
-  }, 0);
-}); 
-
 authRouter.post('/signup', celebrate({
   body: Joi.object().keys({
     email: validationRules.email,
