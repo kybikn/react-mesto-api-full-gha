@@ -162,7 +162,7 @@ function App() {
     auth.register(email, password)
       .then((payload) => {
         // в случае успеха
-        if (payload.data) {
+        if (payload.user) {
           navigate('/signin', { replace: true });
           setInfoTooltipOpen(true);
           setInfoSuccess(true);
@@ -203,7 +203,6 @@ function App() {
     // auth.checkToken()
     api.getProfile()
       .then((payload) => {
-        console.log('payload of profile', payload);
         if (payload) {
           setLoggedIn(true);
           setEmail(payload.email);
@@ -219,7 +218,6 @@ function App() {
         }
       })
       .catch(() => { return false });
-    // }
   }, [navigate]);
 
   function onClose() {
