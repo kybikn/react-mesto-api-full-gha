@@ -163,10 +163,10 @@ function App() {
       .then((payload) => {
         // в случае успеха
         if (payload.user) {
-          navigate('/signin', { replace: true });
           setInfoTooltipOpen(true);
           setInfoSuccess(true);
-          setInfoMessage(`Вы успешно зарегистрировались!`)
+          setInfoMessage(`Вы успешно зарегистрировались!`);
+          navigate('/signin', { replace: true });
         }
       })
       .catch((err) => {

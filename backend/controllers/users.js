@@ -14,13 +14,18 @@ const { NODE_ENV, JWT_SECRET } = config;
 
 // регистрация
 const createUser = (req, res, next) => {
-  const {
-    name, about, avatar, email, password,
-  } = req.body;
-  bcrypt.hash(password, 10)
-    .then((hash) => User.create({
-      name, about, avatar, email, password: hash,
-    }))
+  const { name, about, avatar, email, password } = req.body;
+  bcrypt
+    .hash(password, 10)
+    .then((hash) =>
+      User.create({
+        name,
+        about,
+        avatar,
+        email,
+        password: hash,
+      })
+    )
     .then((user) => {
       const userData = JSON.parse(JSON.stringify(user)); // копируем объект
       delete userData.password;
@@ -30,11 +35,8 @@ const createUser = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
-  const {
-    email, password,
-  } = req.body;
-  User
-    .findUserByCredentials({ email, password })
+  const { email, password } = req.body;
+  User.findUserByCredentials({ email, password })
     .then((user) => {
       const userData = JSON.parse(JSON.stringify(user)); // копируем объект
       delete userData.password;
@@ -46,7 +48,8 @@ const login = (req, res, next) => {
           httpOnly: true,
           sameSite: true,
         })
-        .status(SUCCESS_CODE).send({ user: userData });
+        .status(SUCCESS_CODE)
+        .send({ user: userData });
     })
     .catch(next);
 };
@@ -54,11 +57,11 @@ const login = (req, res, next) => {
 const logout = (req, res, next) => {
   try {
     res
-    .clearCookie('jwt')
-    .status(SUCCESS_CODE)
-    .send({ message: 'Пользователь вышел' });
+      .clearCookie('jwt')
+      .status(SUCCESS_CODE)
+      .send({ message: 'Пользователь вышел' });
   } catch (error) {
-    next(error)
+    next(error);
   }
 };
 
@@ -94,14 +97,10 @@ const getUsers = (req, res, next) => {
 
 const editUser = (data, req, res, next) => {
   const id = req.user._id;
-  User.findByIdAndUpdate(
-    id,
-    data,
-    {
-      new: true,
-      runValidators: true,
-    },
-  )
+  User.findByIdAndUpdate(id, data, {
+    new: true,
+    runValidators: true,
+  })
     .then((user) => {
       if (!user) {
         throw new NotFoundError(ERROR_NOT_FOUND_USER_MESSAGE);

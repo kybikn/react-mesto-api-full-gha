@@ -60,7 +60,7 @@ class Auth {
 const auth = new Auth({
   baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
   headers: {
-    'Accept': 'application/json',
+    Accept: 'application/json',
     'Content-Type': 'application/json',
   },
 });
