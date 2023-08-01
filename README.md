@@ -8,6 +8,9 @@
 ## Нативный проект Mesto:
 [Click here!](https://kybikn.github.io/mesto/)
 
+## Макет: 
+[Click here!](https://www.figma.com/file/5H3gsn5lIGPwzBPby9jAOo/JavaScript.-Sprint-12?node-id=0%3A1&mode=dev)
+
 ## Описание:
 **Mesto** - веб-приложение, где пользователи могут создавать фотокарточки и делиться ими.<br>
 Приложение написано с помощью библиотеки React.js (frontend) и фреймворка Express.js (backend).<br>
@@ -21,6 +24,7 @@
 
 ## Технологии:
 - HTML5 / CSS3
+- Pixel Perfect
 - БЭМ
 - Flexbox
 - JavaScript
