@@ -1,3 +1,5 @@
+import { BASE_URL } from "./constants";
+
 class Api {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -118,7 +120,7 @@ class Api {
 
 // ----- Инстанс класса Api --------
 const api = new Api({
-  baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
+  baseUrl: BASE_URL,
   headers: {
     'Content-Type': 'application/json',
   },
