@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mesto-frontend-deploy
+  namespace: kybikn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mesto-frontend-app
+  template:
+    metadata:
+      labels:
+        app: mesto-frontend-app
+    spec:
+      containers:
+        - name: mesto-frontend-container
+          image: registry.launc.ru/igorpex/mesto-frontend:0.1
+          ports:
+            - containerPort: 80

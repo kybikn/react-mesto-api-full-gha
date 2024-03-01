@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mesto-backend-deploy
+  namespace: kybikn
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mesto-backend-app
+  template:
+    metadata:
+      labels:
+        app: mesto-backend-app
+    spec:
+      containers:
+        - name: mesto-backend-container
+          image: registry.launc.ru/igorpex/mesto-backend:0.3
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - secretRef:
+                name: mesto-backend-secret

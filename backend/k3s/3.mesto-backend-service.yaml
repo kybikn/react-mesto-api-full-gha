@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mesto-backend-service
+  namespace: kybikn
+spec:
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3001
+  type: ClusterIP
+  clusterIP: None
+  selector:
+    app: mesto-backend-app

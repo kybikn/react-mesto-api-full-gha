@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mesto-backend-ingress
+  namespace: kybikn
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - secretName: api-mesto-kybikn-ru-tls
+      hosts:
+        - api.mesto.kybikn.ru
+  rules:
+    - host: api.mesto.kybikn.ru
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: mesto-backend-service
+                port:
+                  number: 80
+  ingressClassName: nginx
