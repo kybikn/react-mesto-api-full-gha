@@ -11,11 +11,11 @@ const checkErrors = require('./middlewares/checkErrors');
 const cors = require('./middlewares/cors');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT } = config;
+const { PORT, MONGO_URL_PROD } = config;
 
 const app = express();
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(MONGO_URL_PROD);
 
 const limiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
@@ -23,7 +23,6 @@ const limiter = rateLimit({
   standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
-
 
 app.use(cors);
 app.use(cookieParser());
