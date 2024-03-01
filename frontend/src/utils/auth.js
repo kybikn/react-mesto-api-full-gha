@@ -1,3 +1,5 @@
+import { BASE_URL } from "./constants";
+
 class Auth {
   constructor({ baseUrl, headers }) {
     this._baseUrl = baseUrl;
@@ -58,7 +60,7 @@ class Auth {
 
 // ----- Инстанс класса Auth --------
 const auth = new Auth({
-  baseUrl: 'https://api.mesto-kybikn.nomoredomains.monster',
+  baseUrl: BASE_URL,
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json',
