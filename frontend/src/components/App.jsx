@@ -5,7 +5,7 @@ import ImagePopup from './ImagePopup';
 import { useEffect, useState } from 'react';
 import api from '../utils/api.js';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
-import avatarImage from '../images/Kusto.jpg';
+import avatarImage from '../images/avatarka.jpg';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
 import AddPlacePopup from './AddPlacePopup';
@@ -28,8 +28,8 @@ function App() {
   const [currentUser, setCurrentUser] = useState({
     _id: '',
     avatar: avatarImage,
-    name: 'Жак-Ив Кусто',
-    about: 'Исследователь океана',
+    name: 'Ваше имя',
+    about: 'Ваша профессия',
   });
   const [cards, setCards] = useState([]);
   const [cardToDelete, setCardToDelete] = useState(null);
