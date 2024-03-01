@@ -78,4 +78,4 @@ npm run start
 Еще раз ссылки:
 Frontend https://mesto.kybikn.ru/
 Backend https://api.mesto.kybikn.ru/
-Backend IP 188.225.47.118
+IP 188.225.47.118
