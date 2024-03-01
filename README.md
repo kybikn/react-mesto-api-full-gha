@@ -1,9 +1,9 @@
 # Веб-приложение "Mesto"
 ## Сайт:
-[Click here!](https://mesto-kybikn.nomoredomains.monster)
+[Click here!](https://mesto.kybikn.ru/)
 
 ## Backend: 
-[Click here!](https://api.mesto-kybikn.nomoredomains.monster)
+[Click here!](https://api.mesto.kybikn.ru/)
 
 ## Нативный проект Mesto:
 [Click here!](https://kybikn.github.io/mesto/)
